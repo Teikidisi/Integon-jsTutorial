@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Ops</title>
+</head>
+<body>
+    <h1>Vamos a aprender matemáticas</h1>
+    <label>Ingrese el primer numero</label>
+    <input type="text" id="num1" />
+    <label>Ingrese el segundo numero:</label>
+    <input type="text" id="num2" />
+    <br/>
+    <input type="button" value="Sumar" onclick="ejecutaSuma(num1,num2)"></input>
+    <input type="button" value="Restar" onclick="ejecutaResta(num1,num2)"></input>
+    <input type="button" value="Dividir" onclick="ejecutaDividir(num1,num2)"></input>
+    <input type="button" value="Multiplicar" onclick="ejecutaMultiplicar(num1,num2)"></input>
+
+    <script src="js/matematico.js"></script>
+    <script>
+
+        function ejecutaSuma(num1,num2){
+            let num1int = parseInt(num1.value);
+            let num2int = parseInt(num2.value);
+            let result = Suma(num1int,num2int)
+            alert(result);
+        }
+
+        function ejecutaResta(num1,num2){
+            let num1int = parseInt(num1.value);
+            let num2int = parseInt(num2.value);
+            let result = Resta(num1int,num2int)
+            alert(result);
+        }
+
+        function ejecutaDividir(num1,num2){
+            let num1int = parseInt(num1.value);
+            let num2int = parseInt(num2.value);
+            let result = Dividir(num1int,num2int)
+            alert(result);
+        }
+
+        function ejecutaMultiplicar(num1,num2){
+            let num1int = parseInt(num1.value);
+            let num2int = parseInt(num2.value);
+            let result = Multiplicar(num1int,num2int)
+            alert(result);
+        }
+
+    </script>
+</body>
+</html>
