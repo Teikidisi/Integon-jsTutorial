@@ -18,6 +18,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
@@ -35,7 +36,7 @@
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show  bg-gray-100" onload="LoadData()">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -354,13 +355,54 @@
       </div>
     </nav>
     <!-- End Navbar -->
+
+
+
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Authors table</h6>
-              <button type="button" onclick="AddRow()" >Add New Entry</button>
+              <!-- <button type="button" onclick="AddRow()" >Add New Entry</button> -->
+              <button type="button" id="btnAjax" class="btn bg-gradient-dark my-4 mb-2" onclick="document.getElementById('modalDiv').style.display='block'">Agregar Autor</button>
+            </div>
+            <div class="container" id="modalDiv" style="display:none;">
+              <div class="row" style="background-color:white;">
+                <form  role="form text-left" action="../assets/js/buttonAjax.js" method="POST">
+                  <span onclick="document.getElementById('modalDiv').style.display='none'" type="reset" class="btn btn-light p-2">&times;</span>
+                  <div class="row">
+                    <div class="mb-3 mt-3 col">
+                      <input type="text" id="nombreInp" class="form-control" placeholder="Nombre" required>
+                    </div>
+                    <div class="mb-3 mt-3 col">
+                      <input type="email" id="correoInp" class="form-control" placeholder="Correo" required >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 col">
+                      <input type="text" id="puestoInp" class="form-control" placeholder="Puesto" required>
+                    </div>
+                    <div class="mb-3 col">
+                      <input type="text" id="areaInp" class="form-control" placeholder="Area" required >
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 col">
+                      <input type="text" id="fotoInp" class="form-control" placeholder="Foto" required >
+                    </div>
+                    <div class="mb-3 col">
+                      <input type="date" id="fechaInp" class="form-control" placeholder="Fecha de Ingreso" required >
+                    </div>
+                    <div class="mb-3 col">
+                      <input type="text" id="estadoInp" class="form-control" placeholder="Estado" required >
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn bg-gradient-dark w-auto mb-3" onclick="AddAutor()">Agregar autor</button>
+                  </div>
+                </form>
+              </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -550,6 +592,10 @@
           </div>
         </div>
       </div>
+      
+
+      
+
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -880,6 +926,10 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/button.js"></script>
+  <script src="../assets/js/autor.js"></script>
+  <script src="../assets/js/loadData.js"></script>
+  <script src="../assets/js/buttonAjax.js"></script>
+  <script src="../assets/js/AddAutorForm.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
