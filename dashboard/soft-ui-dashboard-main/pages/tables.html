@@ -362,10 +362,21 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Authors table</h6>
-              <!-- <button type="button" onclick="AddRow()" >Add New Entry</button> -->
-              <button type="button" id="btnAjax" class="btn bg-gradient-dark my-4 mb-2" onclick="document.getElementById('modalDiv').style.display='block'">Agregar Autor</button>
+            <div class="card-header pb-0 row">
+              <div class="col">
+                <h6>Authors table</h6>
+                <!-- <button type="button" onclick="AddRow()" >Add New Entry</button> -->
+                <button type="button" id="btnAjax" class="btn bg-gradient-dark my-4 mb-2" onclick="document.getElementById('modalDiv').style.display='block'">Agregar Autor</button>
+              </div>
+              <div class="col">
+                <p>Filter job:</p>
+                <!-- <input type="text" id="filterInput" placeholder="Puesto">
+                <button class="btn btn-outline-primary btn-sm mb-0 me-3" id="filterBtn">Buscar</button> -->
+                <button id="Manager" class="btn btn-outline-primary btn-sm mb-0 me-3">Manager</button>
+                <button id="Programator" class="btn btn-outline-primary btn-sm mb-0 me-3">Programator</button>
+                <button id="CEO" class="btn btn-outline-primary btn-sm mb-0 me-3">CEO</button>
+                <button id="All" class="btn btn-outline-primary btn-sm mb-0 me-3">All</button>
+              </div>
             </div>
             <div class="container" id="modalDiv" style="display:none;">
               <div class="row" style="background-color:white;">
@@ -930,6 +941,7 @@
   <script src="../assets/js/loadData.js"></script>
   <script src="../assets/js/buttonAjax.js"></script>
   <script src="../assets/js/AddAutorForm.js"></script>
+  <script src="../assets/js/filter.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

@@ -25,8 +25,9 @@
                     </div>`
     
                     let newFunction = newRow.insertCell(1);
+                    newFunction.className = `${autor.puesto}`;
                     newFunction.innerHTML = `
-                        <p class="text-xs font-weight-bold mb-0">${autor.puesto}</p>
+                        <p class="text-xs font-weight-bold mb-0 ${autor.puesto}">${autor.puesto}</p>
                         <p class="text-xs text-secondary mb-0">${autor.area}</p>`
                     
                     let newStatus = newRow.insertCell(2);

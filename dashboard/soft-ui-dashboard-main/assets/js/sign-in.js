@@ -24,12 +24,14 @@ function demoFetchAPI(e) {
     .then((data) => {
         cred = data.credenciales;
         let real = cred.find(element => element.email === email && element.password === password)
-        if (real != undefined){
-            btnSignIn.innerText="Signing in"
-            loginDiv.style.display="none"
-            loginBanner.style.display="none"
+        if (real != undefined){    
+            $('#loginDiv').hide();
+            $('#loginBanner').hide();
+            $('#LogInSuccessDiv').show();
+            $('#NoAccountDiv').hide();   
+            $('#btnSignIn').text('Signing in')
+            // btnSignIn.innerText="Signing in"
             loginSuccessDiv.style.color="gray"
-            loginSuccessDiv.innerText = "Logging in..."
         }
     })
     .catch((error) => {
