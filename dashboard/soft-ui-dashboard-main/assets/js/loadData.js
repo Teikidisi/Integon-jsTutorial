@@ -12,6 +12,7 @@
                 data.autores.forEach(autor => {
     
                     let newRow = table.insertRow(-1);
+                    $(newRow).addClass('dbRow');
     
                     let newAuthor = newRow.insertCell(0);
                     newAuthor.innerHTML = `<div class="d-flex px-2 py-1">

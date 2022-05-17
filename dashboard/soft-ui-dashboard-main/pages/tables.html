@@ -366,22 +366,22 @@
               <div class="col">
                 <h6>Authors table</h6>
                 <!-- <button type="button" onclick="AddRow()" >Add New Entry</button> -->
-                <button type="button" id="btnAjax" class="btn bg-gradient-dark my-4 mb-2" onclick="document.getElementById('modalDiv').style.display='block'">Agregar Autor</button>
+                <button type="button" id="btnAjax" class="btn bg-gradient-dark my-4 mb-2" onclick="">Nuevo Autor</button>
               </div>
               <div class="col">
                 <p>Filter job:</p>
                 <!-- <input type="text" id="filterInput" placeholder="Puesto">
                 <button class="btn btn-outline-primary btn-sm mb-0 me-3" id="filterBtn">Buscar</button> -->
-                <button id="Manager" class="btn btn-outline-primary btn-sm mb-0 me-3">Manager</button>
-                <button id="Programator" class="btn btn-outline-primary btn-sm mb-0 me-3">Programator</button>
-                <button id="CEO" class="btn btn-outline-primary btn-sm mb-0 me-3">CEO</button>
-                <button id="All" class="btn btn-outline-primary btn-sm mb-0 me-3">All</button>
+                <button id="Manager" class="btn btn-outline-primary btn-sm mb-0 me-3 filter">Manager</button>
+                <button id="Programator" class="btn btn-outline-primary btn-sm mb-0 me-3 filter">Programator</button>
+                <button id="CEO" class="btn btn-outline-primary btn-sm mb-0 me-3 filter">CEO</button>
+                <button id="All" class="btn btn-outline-primary btn-sm mb-0 me-3 filter">All</button>
               </div>
             </div>
             <div class="container" id="modalDiv" style="display:none;">
               <div class="row" style="background-color:white;">
                 <form  role="form text-left" action="../assets/js/buttonAjax.js" method="POST">
-                  <span onclick="document.getElementById('modalDiv').style.display='none'" type="reset" class="btn btn-light p-2">&times;</span>
+                  <span id="cancelAdd" type="reset" class="btn btn-light p-2">&times;</span>
                   <div class="row">
                     <div class="mb-3 mt-3 col">
                       <input type="text" id="nombreInp" class="form-control" placeholder="Nombre" required>
@@ -410,7 +410,7 @@
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-dark w-auto mb-3" onclick="AddAutor()">Agregar autor</button>
+                    <button type="submit" class="btn bg-gradient-dark w-auto mb-3" id="addbtn" onclick="AddAutor()">Agregar autor</button>
                   </div>
                 </form>
               </div>
@@ -419,6 +419,7 @@
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0" id="tableUsers">
                   <thead>
+                    <tr class="dbRow"></tr>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
