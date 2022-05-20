@@ -1,0 +1,81 @@
+<h3>Añadir nuevo vuelo:</h3>
+<form>
+  <div style="margin: 1em">
+    <span>Numero de Vuelo: </span
+    ><input
+      type="text"
+      style="position: absolute; left: 150px"
+      id="inpVuelo"
+      name="noVuelo"
+      required
+      [(ngModel)]="noVuelo"
+    />
+  </div>
+  <div style="margin: 1em">
+    <span>Fecha: </span
+    ><input
+      name="fecha"
+      style="position: absolute; left: 150px"
+      type="text"
+      id="inpFecha"
+      required
+      [(ngModel)]="fecha"
+    />
+  </div>
+  <div style="margin: 1em">
+    <span>Horario: </span
+    ><input
+      name="horario"
+      style="position: absolute; left: 150px"
+      type="text"
+      id="inpHora"
+      required
+      [(ngModel)]="horario"
+    />
+  </div>
+  <div style="margin: 1em">
+    <span>Origen: </span>
+    <input
+      name="origen"
+      style="position: absolute; left: 150px"
+      type="text"
+      id="inpOrigen"
+      required
+      [(ngModel)]="origen"
+    />
+  </div>
+  <div style="margin: 1em">
+    <span>Destino: </span
+    ><input
+      name="destino"
+      style="position: absolute; left: 150px"
+      type="text"
+      id="inpDestino"
+      required
+      [(ngModel)]="destino"
+    />
+  </div>
+  <button type="button" (click)="AddVuelo()">Agregar</button>
+  <p id="added" style="font-weight: bold; color: darkgreen"></p>
+</form>
+
+<table>
+  <thead>
+    <th>Index</th>
+    <th>Numero de Vuelo</th>
+    <th>Fecha</th>
+    <th>Horario</th>
+    <th>Origen</th>
+    <th>Destino</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let vuelo of vuelos; index as myIndex">
+      <td>{{ myIndex + 1 }}</td>
+      <td>{{ vuelo.NoVuelo | uppercase }}</td>
+      <td>{{ vuelo.Fecha }}</td>
+      <td>{{ vuelo.Horario }}</td>
+      <td>{{ vuelo.Origen | uppercase }}</td>
+      <td>{{ vuelo.Destino | uppercase }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
     });
 
 
-let db, alumnos, autores, credenciales
+let db, alumnos, autores, credenciales, personas, vuelos
 mongo.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -30,11 +30,14 @@ mongo.connect(url, {
         return;
     }
     db = client.db("cursojavascript");
+    db2 = client.db('angulardb');
     dbdash = client.db("dashboard");
     console.log("Conectado a la DB");
+    personas = db2.collection('personas')
     alumnos = db.collection("alumnos");
     autores = dbdash.collection("autores");
     credenciales = dbdash.collection("credenciales");
+    vuelos = db2.collection("vuelos")
 });
 
 
@@ -133,6 +136,56 @@ app.get("/credenciales", (request,response) => {
         
     })
 })
+
+app.get("/personas", (request,response) => {
+    console.log("se ejecuto la ruta personas")
+    personas.find().toArray((err,items) => {
+        if (err){
+            console.log(err);
+            response.status(500).json({err:err})
+            return;
+        }
+        // response.status(200).json({personas:items});
+        response.status(200).json(items);
+        
+    })
+})
+
+app.get("/vuelos", (request,response) => {
+    console.log("se ejecuto la ruta vuelos")
+    vuelos.find().toArray((err,items) => {
+        if (err){
+            console.log(err);
+            response.status(500).json({err:err})
+            return;
+        }
+        // response.status(200).json({personas:items});
+        response.status(200).json(items);
+        
+    })
+})
+
+app.post("/vuelos", (request,response) => {
+    console.log("posting");
+    console.log(JSON.stringify(request.body));
+    if(request.body != null){
+        vuelos.insertOne({
+            NoVuelo: request.body.NoVuelo,
+            Fecha:  request.body.Fecha,
+            Horario: request.body.Horario,
+            Origen: request.body.Origen,
+            Destino: request.body.Destino,
+        }),
+        (err,result) => {
+            if (err){
+                console.log(err)
+                response.status(500).json({error:err})
+                return;
+            }
+            response.status(200).json({ok:true});
+        };
+    }
+});
 
 app.listen(3005,() => {
     console.log("Escuchando en el puerto 3005...")
